@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Adjusting this to center content vertically */
+            align-items: center; /* Center content horizontally */
+            background-image: url("https://eggmedical.com/wp-content/uploads/2023/09/scales-with-measuring-tape-on-white-background-2021-09-02-02-43-14-utc-1-980x653.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding-top: 80px; /* Adding some space for the navbar */
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 1); /* Slightly transparent background for readability */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            margin: 5px 0;
+            width: 100%;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .suggestions {
+            font-size: 16px;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .p {
+            padding: 15px;
+            border-radius: 5px;
+            border: 2px solid #b8daff;
+            color: #004085;
+            background-color: #f9f9f9;
+            margin-top: 30px;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">BMI CALCULATOR</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">BOT</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="/bmi">BMI CALCI </a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/medicine">Medicine Reaminder</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/mental">Mental Health</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/goals">Goals</a>
+                    </li> 
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 style="color: #FF6347;">BMI Calculator</h1>
+
+        <div class="input-group">
+            <label for="weight">Weight (kg):</label><br>
+            <input type="number" id="weight" placeholder="Enter your weight"><br>
+        </div>
+
+        <div class="input-group">
+            <label for="height">Height (m):</label><br>
+            <input type="number" id="height" step="0.01" placeholder="Enter your height"><br>
+        </div>
+
+        <button onclick="calculateBMI()">Calculate BMI</button>
+
+        <div class="result" id="result"></div>
+        <div class="suggestions" id="suggestions"></div>
+    </div>
+
+    <p class="p">
+        Body Mass Index (BMI) is a measure that helps assess whether a person has a healthy weight for their height. It is calculated by dividing a person's weight in kilograms by the square of their height in meters. <br> BMI is important because it provides a simple and quick way to identify if an individual is underweight, at a healthy weight, overweight, or obese. Knowing your BMI is crucial as it helps in identifying potential health risks related to weight. For instance, being overweight or obese increases the risk of developing conditions like heart disease, diabetes, and high blood pressure. On the other hand, being underweight can also lead to health issues like malnutrition and weakened immunity. Maintaining a healthy BMI can help reduce the risk of these health problems and promote overall well-being.
+    </p>
+
+    <script>
+        function calculateBMI() {
+            var weight = document.getElementById('weight').value;
+            var height = document.getElementById('height').value;
+            var suggestions = document.getElementById('suggestions');
+            
+            if(weight && height) {
+                var bmi = weight / (height * height);
+                var resultText = "Your BMI is " + bmi.toFixed(2);
+                document.getElementById('result').textContent = resultText;
+
+                if (bmi < 18.5) {
+                    resultText += " (Underweight)";
+                    suggestions.textContent = "You should aim to gain some weight by including more nutrient-rich foods in your diet and consider a balanced workout routine.";
+                } else if (bmi >= 18.5 && bmi < 24.9) {
+                    resultText += " (Normal weight)";
+                    suggestions.textContent = "Great job! Continue maintaining a healthy diet and regular exercise to keep up your good health.";
+                } else if (bmi >= 25 && bmi < 29.9) {
+                    resultText += " (Overweight)";
+                    suggestions.textContent = "Consider incorporating more physical activity into your routine and eating a balanced diet to help manage your weight.";
+                } else {
+                    resultText += " (Obese)";
+                    suggestions.textContent = "It's important to consult with a healthcare provider for personalized advice on losing weight through a healthy diet and exercise plan.";
+                }
+                document.getElementById('result').textContent = resultText;
+            } else {
+                document.getElementById('result').textContent = "Please enter valid values for both weight and height.";
+                suggestions.textContent = "";
+            }
+        }
+    </script>
+
+</body>
+</html>

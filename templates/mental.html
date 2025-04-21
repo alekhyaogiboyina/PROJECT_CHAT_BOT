@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psychology Test</title>
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url("https://www.locustherapy.com/wp-content/uploads/2014/06/Depositphotos_43767469_s.jpg");
+            background-size: cover;
+/*            background-repeat: no-repeat;*/
+            background-position: center;
+        }
+
+         .navbar {
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            margin: 0 10px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .navbar ul li a:hover {
+            color: #ff6f61;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            width: 80%;
+            max-width: 800px;
+            overflow-y: auto;
+            height: 90vh;
+        }
+        .h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            background: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .question:hover {
+            background: #f0f0f0;
+            transition: background 0.3s ease;
+        }
+        .question label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .answer {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        input[type="radio"]:focus {
+            outline: 2px solid #ff8c00;
+        }
+        button {
+            background: #ff6f61;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 1%;
+            width: 48%;
+        }
+        button:hover {
+            background: #e55d54;
+            transition: background 0.3s ease;
+        }
+        .reset {
+            background: #d9534f;
+        }
+        .reset:hover {
+            background: #c12e2a;
+        }
+        .result {
+            margin-top: 20px;
+            background: #e7f9f5;
+            border: 1px solid #38a89d;
+            border-radius: 10px;
+            padding: 20px;
+            color: #2c7a7b;
+            display: none;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        @media (max-width: 600px) {
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+  <div class="navbar">
+        <span>Test your Mental Health</span>
+        <ul>
+            <li><a href="/">BOT</a></li>
+            <li><a href="/bmi">BMI CALCI</a></li>
+            <li><a href="/medicine">Medicine Reminder</a></li>
+            <!-- <li><a href="/mental">Mental Health</a></li> -->
+            <li><a href="/goals">Goals</a></li>
+            <li><a href="#">  </a></li>
+
+        </ul>
+    </div>
+
+    
+
+<div class="container">
+    <h1>Your Mental Health Test</h1>
+    <form id="quiz-form">
+        <!-- Questions will be injected here dynamically -->
+    </form>
+    <div>
+        <button type="button" onclick="submitQuiz()">Submit</button>
+        <button type="button" class="reset" onclick="resetQuiz()">Reset</button>
+    </div>
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    const questions = [
+        { "name": "Question 1", "description": "I feel overwhelmed by my emotions." },
+        { "name": "Question 2", "description": "I am able to handle the level of stress I experience." },
+        { "name": "Question 3", "description": "I have physical symptoms of anxiety, such as sweaty palms." },
+        { "name": "Question 4", "description": "I have strong relationships with people I care about." },
+        { "name": "Question 5", "description": "I've made many terrible decisions in my life." },
+        { "name": "Question 6", "description": "I am very self-critical." },
+        { "name": "Question 7", "description": "I cannot get beyond long-past traumatic events or significant losses." },
+        { "name": "Question 8", "description": "I am able to identify and express my emotions." },
+        { "name": "Question 9", "description": "I trust that if I confide in others, they will be supportive." },
+        { "name": "Question 10", "description": "I engage in at least one behavior that significantly impairs my ability to function on a daily basis." },
+        { "name": "Question 11", "description": "When I experience a strong emotion, I usually know why it's hitting me." },
+        { "name": "Question 12", "description": "My mood is stable." },
+        { "name": "Question 13", "description": "I procrastinate and/or avoid dealing with important things in my life." },
+        { "name": "Question 14", "description": "I often feel sad." },
+        { "name": "Question 15", "description": "I have a sense of purpose in life." },
+        { "name": "Question 16", "description": "I am lonely." },
+        { "name": "Question 17", "description": "I get upset or angry easily." },
+        { "name": "Question 18", "description": "I've noticed changes in my appetite or sleep patterns relative to when I was at my best." },
+        { "name": "Question 19", "description": "I'm able to bounce back from setbacks." },
+        { "name": "Question 20", "description": "I manage my time and my obligations; most days life feels under control." }
+    ];
+
+    const form = document.getElementById("quiz-form");
+    questions.forEach((q, index) => {
+        const questionDiv = document.createElement("div");
+        questionDiv.classList.add("question");
+
+        const label = document.createElement("label");
+        label.textContent = q.description;
+        questionDiv.appendChild(label);
+
+        const levels = ["None", "Mild", "Moderate", "Severe"];
+        levels.forEach((level, i) => {
+            const answerDiv = document.createElement("div");
+            answerDiv.classList.add("answer");
+
+            const input = document.createElement("input");
+            input.type = "radio";
+            input.name = `question${index + 1}`;
+            input.value = i + 1;
+
+            const answerLabel = document.createElement("label");
+            answerLabel.textContent = level;
+
+            answerDiv.appendChild(input);
+            answerDiv.appendChild(answerLabel);
+            questionDiv.appendChild(answerDiv);
+        });
+
+        form.appendChild(questionDiv);
+    });
+
+    function submitQuiz() {
+        let score = 0;
+        let allAnswered = true;
+
+        questions.forEach((_, index) => {
+            const selectedOption = document.querySelector(`input[name="question${index + 1}"]:checked`);
+            if (selectedOption) {
+                score += parseInt(selectedOption.value);
+            } else {
+                allAnswered = false;
+            }
+        });
+
+        if (!allAnswered) {
+            alert("Please answer all questions before submitting.");
+            return;
+        }
+
+        let resultText = '';
+        if (score <= 40) {
+            resultText = 'Your mental health seems to be in a good state, but consider keeping an eye on your emotional well-being.';
+        } else if (score <= 60) {
+            resultText = 'You might be dealing with moderate stress or emotional challenges. It would help to focus on relaxation techniques and reach out for support if needed.';
+        } else if (score <= 80) {
+            resultText = 'Your results suggest you might be facing significant emotional stress. It’s important to take time for self-care and talk to a professional if needed.';
+        } else {
+            resultText = 'You may be experiencing severe emotional distress. It’s important to seek professional help and take immediate steps for your mental well-being.';
+        }
+
+        const resultElement = document.getElementById("result");
+        resultElement.style.display = 'block';
+        resultElement.textContent = resultText;
+    }
+
+    function resetQuiz() {
+        const inputs = document.querySelectorAll('input[type="radio"]');
+        inputs.forEach(input => (input.checked = false));
+
+        const resultElement = document.getElementById("result");
+        resultElement.style.display = 'none';
+        resultElement.textContent = '';
+    }
+</script>
+
+</body>
+</html>

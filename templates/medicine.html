@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Reminder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh; 
+            background-image: url("https://cdn.pixabay.com/photo/2023/10/01/14/40/medicine-8287535_1280.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+             overflow-x: hidden;
+        }
+
+        html, body {
+            width: 100%;
+            overflow-x: hidden;  /* Prevent horizontal scrolling */
+        }
+
+
+        h1 {
+            color: #333;
+            margin-top: 80px; /* Add space to avoid overlap with navbar */
+            text-align: center;
+        }
+
+        .navbar-nav {
+            display: flex;
+            width: 100%;
+        }
+
+        .nav-item {
+            list-style-type: none;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #000;
+            font-size: 16px;
+        }
+
+        .navbar-toggler {
+            border: none;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #f4f4f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 120px;
+        }
+
+        .reminder-list {
+            margin-top: 20px;
+        }
+
+        .reminder-item {
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #e3f2fd;
+            border-radius: 5px;
+            border: 1px solid #90caf9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .delete-btn {
+            background-color: #f44336;
+        }
+
+        .delete-btn:hover {
+            background-color: #e53935;
+        }
+
+        .edit-btn {
+            background-color: #ffa500;
+        }
+
+        .edit-btn:hover {
+            background-color: #ff5722;
+        }
+
+        .request-permission-btn {
+            background-color: #2196F3;
+            margin-top: 20px;
+        }
+
+        .request-permission-btn:hover {
+            background-color: #1976D2;
+        }
+    </style>
+</head>
+<body>
+   <div>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top w-100" style="background-color: white;">
+        <div class="container-fluid">
+            <!-- Navbar Brand (ChatBot) -->
+            <!-- <a class="navbar-brand" >HealthCare ChatBot</a> -->
+            
+            <!--
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button> -->
+            
+            <!-- Navbar Items (menu) -->
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" >Medicine Remainder</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">BOT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/bmi">BMI CALCI</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="/medicine">Medicine Reminder</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/mental">Mental Health</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/goals">Goals</a>
+                    </li> 
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    <h1>Medical Reminder</h1>
+    <div class="container">
+        <label for="medication-name">Medication Name:</label>
+        <input type="text" id="medication-name" placeholder="Enter medication name" required><br><br>
+
+        <label for="dosage">Dosage:</label>
+        <input type="text" id="dosage" placeholder="Enter dosage (e.g., 10mg)" required><br><br>
+
+        <label for="reminder-time">Reminder Time:</label>
+        <input type="time" id="reminder-time" required><br><br>
+
+        <button onclick="addReminder()">Add Reminder</button>
+
+        <!-- Button to Request Notification Permission -->
+        <button class="request-permission-btn" onclick="requestNotificationPermission()">Enable Notifications</button>
+
+        <div class="reminder-list" id="reminder-list"></div>
+    </div>
+
+    <script>
+        let reminderTimeouts = [];
+        let currentEditIndex = -1;
+
+        function showNotification(medicationName, dosage, reminderTime) {
+            if (Notification.permission === "granted") {
+                var notification = new Notification("Medication Reminder", {
+                    body: `${medicationName} - ${dosage} at ${reminderTime}`,
+                    icon: 'https://www.example.com/icon.png'
+                });
+            }
+        }
+
+        function requestNotificationPermission() {
+            if (Notification.permission !== "granted") {
+                Notification.requestPermission().then(function(permission) {
+                    if (permission === "granted") {
+                        console.log("Notification permission granted.");
+                    } else {
+                        console.log("Notification permission denied.");
+                    }
+                });
+            }
+        }
+
+        function addReminder() {
+            var medicationName = document.getElementById('medication-name').value;
+            var dosage = document.getElementById('dosage').value;
+            var reminderTime = document.getElementById('reminder-time').value;
+            var reminderList = document.getElementById('reminder-list');
+            
+            if (medicationName && dosage && reminderTime) {
+                var reminderItem = document.createElement('div');
+                reminderItem.classList.add('reminder-item');
+                reminderItem.innerHTML = `<strong>${medicationName}</strong><br>Dosage: ${dosage}<br>Time: ${reminderTime}`;
+                
+                // Create Edit button
+                var editBtn = document.createElement('button');
+                editBtn.classList.add('edit-btn');
+                editBtn.textContent = 'Edit';
+                editBtn.onclick = function() {
+                    editReminder(reminderItem, medicationName, dosage, reminderTime);
+                };
+
+                // Create Delete button
+                var deleteBtn = document.createElement('button');
+                deleteBtn.classList.add('delete-btn');
+                deleteBtn.textContent = 'Delete';
+                deleteBtn.onclick = function() {
+                    deleteReminder(reminderItem, medicationName, reminderTime);
+                };
+
+                reminderItem.appendChild(editBtn);
+                reminderItem.appendChild(deleteBtn);
+                reminderList.appendChild(reminderItem);
+
+                var reminderTimeObj = new Date();
+                var [hours, minutes] = reminderTime.split(":");
+                reminderTimeObj.setHours(hours, minutes, 0, 0);
+
+                var currentTime = new Date();
+                var delay = reminderTimeObj - currentTime;
+
+                if (delay < 0) {
+                    delay += 24 * 60 * 60 * 1000;
+                }
+
+                var timeoutID = setTimeout(function() {
+                    showNotification(medicationName, dosage, reminderTime);
+                }, delay);
+
+                reminderTimeouts.push(timeoutID);
+
+                document.getElementById('medication-name').value = '';
+                document.getElementById('dosage').value = '';
+                document.getElementById('reminder-time').value = '';
+                currentEditIndex = -1;
+            } else {
+                alert('Please fill in all fields!');
+            }
+        }
+
+        function editReminder(reminderItem, medicationName, dosage, reminderTime) {
+            document.getElementById('medication-name').value = medicationName;
+            document.getElementById('dosage').value = dosage;
+            document.getElementById('reminder-time').value = reminderTime;
+
+            reminderItem.remove();
+        }
+
+        function deleteReminder(reminderItem, medicationName, reminderTime) {
+            reminderItem.remove();
+
+            var timeoutIndex = reminderTimeouts.indexOf(medicationName);
+            if (timeoutIndex > -1) {
+                clearTimeout(reminderTimeouts[timeoutIndex]);
+                reminderTimeouts.splice(timeoutIndex, 1);
+            }
+
+            alert(`Reminder for ${medicationName} at ${reminderTime} has been deleted.`);
+        }
+    </script>
+
+</body>
+</html>
