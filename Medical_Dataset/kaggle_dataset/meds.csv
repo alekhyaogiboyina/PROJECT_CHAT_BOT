@@ -1,0 +1,42 @@
+Disease,Medications
+Fungal infection,Clotrimazole,Terbinafine,Fluconazole,Ketoconazole,Miconazole
+Allergy,Cetirizine,Loratadine,Fexofenadine, Diphenhydramine, Desloratadine
+GERD,Omeprazole,Lansoprazole,Ranitidine,Esomeprazole,Antacids like Tums
+Chronic Cholestasis,Ursodeoxycholic Acid, Cholestyramine, Rifampicin, Lactulose, S-adenosylmethionine
+Drug Reaction,Antihistamines like Diphenhydramine, Prednisolone, Loratadine, Epinephrine, Methylprednisolone
+Peptic ulcer disease,Omeprazole, Lansoprazole, Ranitidine, Sucralfate, Antacids like Tums
+Diabetes,Metformin, Insulin, Glipizide, Sitagliptin, Pioglitazone
+Gastroenteritis,Oral Rehydration Solution (ORS), Loperamide, Bismuth subsalicylate, Ondansetron, Zinc supplements
+Bronchial Asthma,Albuterol, Salmeterol, Fluticasone, Montelukast, Beclomethasone
+Hypertension,Losartan, Amlodipine, Enalapril, Metoprolol, Hydrochlorothiazide
+Migraine,Sumatriptan, Rizatriptan, Ibuprofen, Paracetamol, Amitriptyline
+Cervical spondylosis,Diclofenac, Ibuprofen, Tramadol, Muscle Relaxants like Cyclobenzaprine, Paracetamol
+Paralysis (Brain Hemorrhage),Mannitol, Anticoagulants like Warfarin, Antiepileptics like Phenytoin, Labetalol, Rehabilitation therapies
+Jaundice,Ursodeoxycholic Acid, Vitamin K, Lactulose, Acetaminophen, Ribavirin
+Malaria,Artemisinin-based Combination Therapy (ACT), Chloroquine, Quinine, Primaquine, Mefloquine
+Chicken pox,Acetaminophen, Acyclovir, Diphenhydramine, Calamine lotion, Ibuprofen
+Dengue,Paracetamol, Fluid replacement (ORS), Blood transfusion, Corticosteroids, Antipyretics like Paracetamol
+Typhoid,Ciprofloxacin, Azithromycin, Chloramphenicol, Ceftriaxone, Levofloxacin
+hepatitis A,Hepatitis A Vaccine, Ribavirin, Interferon, Acetaminophen, Antihistamines for itching
+Hepatitis B,Tenofovir, Entecavir, Lamivudine, Pegylated Interferon, Hepatitis B vaccine
+Hepatitis C,Sofosbuvir, Ribavirin, Pegylated interferon, Simeprevir, Ledipasvir
+Hepatitis D,Pegylated interferon, Lamivudine, Tenofovir, Hepatitis B vaccine, Ribavirin
+Hepatitis E,No specific antiviral drugs, supportive care, Ribavirin, Interferons, Acetaminophen
+Alcoholic Hepatitis,Prednisolone, Pentoxifylline, Lactulose, Ursodeoxycholic acid, Zinc supplements
+Tuberculosis,Isoniazid, Rifampicin, Pyrazinamide, Ethambutol, Streptomycin
+Common Cold,Paracetamol, Ibuprofen, Diphenhydramine, Vitamin C, Nasal decongestants like Oxymetazoline
+Pneumonia,Amoxicillin, Ceftriaxone, Azithromycin, Doxycycline, Oseltamivir
+Dimorphic hemorrhoids,Topical Hydrocortisone, Oral Fiber supplements, Lidocaine cream, Sitz baths, Pain relief medications like Paracetamol
+Heart attack,Aspirin, Nitroglycerin, Clopidogrel, Beta-blockers like Metoprolol, Statins like Atorvastatin
+Varicose veins,Compression stockings, Sclerotherapy, Nonsteroidal anti-inflammatory drugs (NSAIDs), Pentoxifylline, Laser therapy
+Hypothyroidism,Levothyroxine, Liothyronine, Thyroid hormone replacement, Iodine supplements, Synthroid
+Hyperthyroidism,Methimazole, Propylthiouracil, Beta-blockers like Propranolol, Radioactive iodine, Sodium iodide
+Hypoglycemia,Glucose tablets, Glucagon injection, Dextrose solution, Honey, Fruit juice
+Osteoarthritis,Paracetamol, Ibuprofen, Glucosamine, Chondroitin, Capsaicin cream
+Arthritis,Methotrexate, NSAIDs like Ibuprofen, Corticosteroids like Prednisone, Hydroxychloroquine, Biologic agents like Etanercept
+Paroymsal Positional Vertigo,Antihistamines like Meclizine, Betahistine, Diuretics, Diazepam, Vestibular rehabilitation therapy
+Acne,Benzoyl Peroxide, Salicylic Acid, Retinoids like Tretinoin, Antibiotics like Doxycycline, Oral contraceptives
+Urinary tract infection,Ciprofloxacin, Nitrofurantoin, Trimethoprim-sulfamethoxazole, Fosfomycin, Cephalexin
+Psoriasis,Topical Steroids like Hydrocortisone, Calcipotriene, Methotrexate, Biologics like Etanercept, UVB Light Therapy
+Impetigo,Mupirocin ointment, Cephalexin, Clindamycin, Amoxicillin, Penicillin
+Influenza,Oseltamivir,Zanamivir,Peramivir,Baloxavir
