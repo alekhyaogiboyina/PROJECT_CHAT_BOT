@@ -1,4 +1,4 @@
-# Project Title : Healthcare Chatbot Using Machine Learning and Natural Language Preocessing
+# Project Title : Healthcare Chatbot Using Machine Learning and Natural Language Processing
 The aim of this project is to develop an intelligent healthcare assistant that predicts diseases based on user symptoms and provides personalized recommendations. It offers disease descriptions, precautions, medications, workouts, diet plans, and connects users to relevant specialists.
 
 ## Features
@@ -16,13 +16,15 @@ The aim of this project is to develop an intelligent healthcare assistant that p
 - Backend: Python, Flask
 - Frontend: Html, CSS, Javascript
 - Models: KNN, Adaboost ,MLP
+
 ## Prerequisites
 - Python 3.11 or higher
 - Flask
 - Anaconda
 - Jupyter notebook
+  
 ## Dataset
-Here’s a list of all the datasets used in your project:
+Here’s a list of all the datasets used in the project:
 
 1. **Symptoms-Disease Dataset**  
    Contains mappings of various symptoms to corresponding diseases, used for training the machine learning models for disease prediction.
@@ -55,7 +57,7 @@ Here’s a list of all the datasets used in your project:
 
 
 ### 2. **Data Collection**  
-   - Gather multiple healthcare-related datasets from public sources like Kaggle and official health portals:  
+   - Gathered multiple healthcare-related datasets from public sources like Kaggle and official health portals:  
      - Symptoms-Disease mappings  
      - Disease descriptions  
      - Precautions  
@@ -128,30 +130,32 @@ PROJECT_CHAT_BOT/
 │   │  |    ├── style.css/
 │   │  |    └──back.png
 ├── templates/
-│   │   ├──index.html
 │   │   ├──home.html
 │   │   ├──bmi.html
 │   │   ├──medicine.html
 │   │   ├──mental.html
-│   │   └──goals.html
-├── uploads/   
+│   │   └──goals.html  
 ├── app.py
-├── classification_report.txt
 ├── HCC.ipynb
-├── models_results.txt
-├── pneumonia_detection_transfer_learning.ipynb
+├── DATA.json
 └── README.md
 ```
 ## Key files
-- **`Pneumonia_Detection/templates/index.html`**: The main HTML file the application interface
-- **`Pneumonia_Detection/app.py`**:The app.py file typically contains the main Flask application logic, including route definitions, model loading, and image prediction handling for the pneumonia detection system.
-- **`Pneumonia_Detection/pneumonia_detection_transfer_leraning.ipynb`**: The file `pneumonia_detection_transfer_learning (2).ipynb` contains a transfer learning-based implementation using a pretrained model (likely VGG16 and EfficientNet-B0) to classify chest X-ray images into Pneumonia and Normal categories, enhancing performance with reduced training time.
+- **`PROJECT_CHAT_BOT/templates/home.html`**: The main HTML file for the chatbot interface, serving as the landing page for users.
+- **`PROJECT_CHAT_BOT/app.py`**:The app.py file typically contains the main Flask application logic, including route definitions, model loading, and symptom input handling, and disease prediction using the trained ensemble model.
+- **`PROJECT_CHAT_BOT/HCC.ipynb`**: he Jupyter Notebook used for model development, including data preprocessing, training, evaluation, and ensemble implementation using KNN, AdaBoost, and MLP classifiers.
+- - **`PROJECT_CHAT_BOT/TRAINED_MODELS/m_v.pkl`**: The trained machine learning model file saved in pickle format. It performs majority voting based on predictions from KNN, AdaBoost, and MLP.
+
 ## Project Ouput Images
-1. Home page of the application [here](https://drive.google.com/file/d/1d9znJ6vk63_HBbLtDFe2XrOK8lHLHJNn/view?usp=drive_link)
-2. Pneumonia chest x-ray image uploaded [here](https://drive.google.com/file/d/1RKhDq7klpBsSw-S7kbKn7lrr3iLF6VdJ/view?usp=drive_link)
-3. Image classified as Pneumonia [here](https://drive.google.com/file/d/1O6Q3gRiKHu0WyFCtso253gpseN38pWjL/view?usp=drive_link)
-4. Normal chest x-ray image uploaded [here](https://drive.google.com/file/d/1Bz0vsnS2mlNT7hIEgIjywYf9D5zwNtrX/view?usp=drive_link)
-5. Image classified as Normal [here](https://drive.google.com/file/d/1chQDDWYuB22FavN1DZGZ5Bz0oxhwhTSs/view?usp=drive_link)
+1. Home page of the application [here](https://drive.google.com/file/d/1roGZ7yuZqUHXYpHfXEhxt7sza6oMvmBf/view?usp=sharing)
+2. Symptom Inquiry process by chabbot [here](https://drive.google.com/file/d/1ozWYQrHGEC0Onn3glQ8hwjKoXy5czuto/view?usp=sharing)
+3. Disease Predition and discription by chatbot  [here](https://drive.google.com/file/d/14wcEORa4t_SqgthxcCr3GSs7FkTwMD8y/view?usp=sharing)
+4. Precautions by chatbot [here](https://drive.google.com/file/d/1EJuKvm_fqnpqy1zVP6vT-frOOjXwkhnM/view?usp=sharing)
+5. Diet suggestions by chatbot [here](https://drive.google.com/file/d/1vg-OqJf9okorQU-X60KqEXfIBbLqhzHV/view?usp=sharing)
+6. Workout and medical specialist recommendations by chatbot [here](https://drive.google.com/file/d/1tCqQMbn6k0YRGiL4j-ZLakYPq_iGI27y/view?usp=sharing)
+7. Doctor referal by chatbot [here](https://drive.google.com/file/d/1tCqQMbn6k0YRGiL4j-ZLakYPq_iGI27y/view?usp=sharing)
+8. Diagnosis summary by chabot[here](https://drive.google.com/file/d/1NZQj-uLJc5zYljpnu34qIcWCy-f1nDlc/view?usp=sharing)
+   
 ## Project Execution Video
 For a detailed demonstration of Pneumonia Detection, you can watch the project video here [here](https://drive.google.com/file/d/1gTRoixlaL1WpGmOQ0CuSCidXgXaTJmxj/view?usp=drive_link)
    
