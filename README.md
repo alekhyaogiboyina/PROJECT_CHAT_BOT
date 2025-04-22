@@ -108,35 +108,36 @@ Here’s a list of all the datasets used in your project:
 ## Project Structure
 ```
 PROJECT_CHAT_BOT/
-├── chest_xray/
-│   │  ├──test/
-│   │  │  ├──NORMAL/
-│   │  │  └──PENUMONIA/
-│   │  ├──train/
-│   │  │  ├──NORMAL/
-│   │  │  └──PNEUMONIA/
-│   │  ├──val/
-│   │  │  ├──NORMAL/
-│   │  │  └──PNEUMONIA/
-├── Images/
-│   │  ├──category_distribution_bar.png 
-│   │  ├──category_distribution_pie.png
-│   │  ├──confusion_matrix.png
-│   │  └──image_display.png
-├── saved_models/
-│   │  ├──best_model.h5  
+├── Medical_Dataset/
+│   │  ├──Kaggle_dataset/
+│   │  │  ├──description/
+|   |  |  └──symptom_severity/
+|   |  |  └──symptom_des/
+|   |  |  └──precautions/
+|   |  |  └──diets/
+|   |  |  └──workouts/
+|   |  |  └──disease_specializations/
+|   |  |  └──Indian_doctors_dataset/
+│   │  ├──full dataset/
+│   │  ├──Training/
+│   │  ├──Testing/
+├── TRAINED_MODELS/
+│   │  ├──m_v.pkl  
 ├── static/
-│   │   ├── css/
-│   │   ├──js/
-│   │   ├──img.jpeg
-│   │   └──main.jpeg
+│   │  ├──styles/
+│   │  |    ├── style.css/
+│   │  |    └──back.png
 ├── templates/
-│   │   ├──result.html
-│   │   └── index.html
+│   │   ├──index.html
+│   │   ├──home.html
+│   │   ├──bmi.html
+│   │   ├──medicine.html
+│   │   ├──mental.html
+│   │   └──goals.html
 ├── uploads/   
 ├── app.py
 ├── classification_report.txt
-├── Dataset_Visualization.ipynb
+├── HCC.ipynb
 ├── models_results.txt
 ├── pneumonia_detection_transfer_learning.ipynb
 └── README.md
