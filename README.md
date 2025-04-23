@@ -156,6 +156,5 @@ PROJECT_CHAT_BOT/
 7. Doctor referal by chatbot [here](https://drive.google.com/file/d/1tCqQMbn6k0YRGiL4j-ZLakYPq_iGI27y/view?usp=sharing)
 8. Diagnosis summary by chabot[here](https://drive.google.com/file/d/1NZQj-uLJc5zYljpnu34qIcWCy-f1nDlc/view?usp=sharing)
    
-## Project Execution Video
-For a detailed demonstration of Pneumonia Detection, you can watch the project video here [here](https://drive.google.com/file/d/1gTRoixlaL1WpGmOQ0CuSCidXgXaTJmxj/view?usp=drive_link)
+
    
